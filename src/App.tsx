@@ -5,7 +5,7 @@ import Header from './components/Header';
 
 
 class App extends React.Component {
-  public render() {
+  render() {
     return (
       <div className="App">
         <Header/>
