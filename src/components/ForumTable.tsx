@@ -13,6 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import FolderIcon from '@material-ui/icons/Folder';
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 import '../styles.css';
 
 interface IData {
@@ -37,15 +38,18 @@ const data: IData[] = [
 ];
 
 class ForumTable extends React.Component {
+    state = {
+        categories: true
+    };
 
     render() {
         return(
-            <div className='appLayout__constrainWidth'>
+            <div>
               <Paper>
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Category</TableCell>
+                      <TableCell>Title</TableCell>
                       <TableCell>Last Post</TableCell>
                     </TableRow>
                   </TableHead>
@@ -54,7 +58,7 @@ class ForumTable extends React.Component {
                       return (
                         <TableRow key={n.id}>
                           <TableCell component="th" scope="row">
-                            <ListItem>
+                            <ListItem component={Link}  {...{to: "/" + n.name}}>
                               <ListItemIcon>
                                 <FolderIcon />
                               </ListItemIcon>

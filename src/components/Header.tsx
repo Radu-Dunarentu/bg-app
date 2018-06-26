@@ -5,7 +5,7 @@ import '../styles.css';
 class Header extends React.Component {
     render() {
         return (
-            <div className='appLayout__constrainWidth'>Header</div>
+            <div>Header</div>
         );
     }
 }
