@@ -41,7 +41,7 @@ class App extends React.Component {
             <hr/>
 
             <Route exact path="/" component={ForumTable} />
-            <Route path="/threads" component={Threads} />
+            <Route path="/:id" component={Threads} />
 
 
             {/*<ForumTable />*/}
