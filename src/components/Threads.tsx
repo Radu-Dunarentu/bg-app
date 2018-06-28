@@ -9,19 +9,23 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import LocalPostOffice from '@material-ui/icons/LocalPostOffice';
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 // import {Link} from 'react-router-dom';
 
 interface IData {
   id: number;
+  guid: number;
   name: string;
   date: string;
 }
 
 let id = 0;
+let guid = 10;
 function createData(name: string): IData {
   id += 1;
+  guid += 1;
   const date = (new Date).toLocaleString();
-  return { id, name, date};
+  return { id, name, date, guid};
 }
 
 const data: IData[] = [
@@ -32,7 +36,7 @@ const data: IData[] = [
   createData('rgdr'),
 ];
 
-interface IMatch {
+export interface IMatch {
   params: { id: string };
   isExact: boolean;
   path: string;
@@ -64,9 +68,9 @@ class Threads extends React.Component<IThread> {
             <TableBody>
               {data.map(n => {
                 return (
-                  <TableRow key={n.id}>
+                  <TableRow key={n.id} >
                     <TableCell component="th" scope="row">
-                      <ListItem>
+                      <ListItem component={Link}  {...{to: "/topic/" + n.guid}}>
                         <ListItemIcon>
                           <LocalPostOffice />
                         </ListItemIcon>

@@ -6,6 +6,7 @@ import 'typeface-roboto'
 import ForumTable from './components/ForumTable';
 import Header from './components/Header';
 import Threads from './components/Threads';
+import Topic from './components/Topic';
 
 const theme = createMuiTheme();
 
@@ -31,7 +32,7 @@ class App extends React.Component {
                 <Link to="/">Home</Link>
               </HeaderLink>
               <HeaderLink>
-                <Link to="/threads">threads</Link>
+                <Link to="/threads">Threads</Link>
               </HeaderLink>
               <HeaderLink>
                 <Link to="/topics">Topics</Link>
@@ -41,7 +42,8 @@ class App extends React.Component {
             <hr/>
 
             <Route exact path="/" component={ForumTable} />
-            <Route path="/:id" component={Threads} />
+            <Route path="/threads/:id" component={Threads} />
+            <Route path="/topic/:id" component={Topic} />
 
 
             {/*<ForumTable />*/}

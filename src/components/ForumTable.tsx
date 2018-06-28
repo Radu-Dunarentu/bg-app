@@ -58,7 +58,7 @@ class ForumTable extends React.Component {
                       return (
                         <TableRow key={n.id}>
                           <TableCell component="th" scope="row">
-                            <ListItem component={Link}  {...{to: "/" + n.name}}>
+                            <ListItem component={Link}  {...{to: "/threads/" + n.id}}>
                               <ListItemIcon>
                                 <FolderIcon />
                               </ListItemIcon>
