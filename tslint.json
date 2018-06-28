@@ -8,6 +8,8 @@
   },
   "rules": {
     "no-console": false,
-    "member-access": [true, "no-public"]
+    "member-access": [true, "no-public"],
+    "object-literal-sort-keys": false,
+    "jsx-boolean-value": false
   }
 }
