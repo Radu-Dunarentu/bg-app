@@ -4,7 +4,7 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
-import ReactQuill from 'react-quill';
+// import ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -44,8 +44,8 @@ class NewThread extends React.Component <IPostThread, INewThreadState>{
             fullWidth
           />
         </Paper>
-        <ReactQuill value={this.state.text}
-                    onChange={this.handleChange} />
+        {/*<ReactQuill value={this.state.text}
+                    onChange={this.handleChange} />*/}
       </div>
     );
   }
