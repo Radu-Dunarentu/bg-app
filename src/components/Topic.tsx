@@ -1,5 +1,7 @@
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import {Theme} from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import createStyles from '@material-ui/core/styles/createStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
 import {IMatch} from './Threads';
@@ -25,6 +27,7 @@ interface IName {
 
 interface ITopic {
   match: IMatch;
+  classes: any;
 }
 
 const data: IData[] = [
@@ -128,7 +131,7 @@ const data: IData[] = [
 
 class Topic extends React.Component<ITopic> {
   render() {
-    const {match} = this.props;
+    const {match, classes} = this.props;
     return(
       <div>
 
@@ -137,19 +140,14 @@ class Topic extends React.Component<ITopic> {
         <div>
           {data.map((post: IData) => {
               return (
-                <Card key={post._id}>
-                  <CardContent>
-                    <Typography color="textSecondary">
-                      {post.name.first} {post.name.last} {}
-                    </Typography>
-                    <Typography color="textSecondary">
-                      {post.registered}
-                    </Typography>
-                    <Typography component="p">
-                      {post.about}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <Paper className={classes.root} elevation={1} key={post._id}>
+                  <Typography component="p">
+                    {post.name.first} {post.name.last} {post.registered}
+                  </Typography>
+                 <Typography component="p">
+                   {post.registered} {post.about}
+                 </Typography>
+                </Paper >
               )
             }
           )}
@@ -159,4 +157,10 @@ class Topic extends React.Component<ITopic> {
   }
 }
 
-export default Topic;
+export default withStyles(({ mixins, spacing }: Theme) => createStyles({
+  root: {
+    ...mixins.gutters(),
+    paddingTop: spacing.unit * 2,
+    paddingBottom: spacing.unit * 2,
+  },
+}))(Topic);

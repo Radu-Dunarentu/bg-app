@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import 'typeface-roboto'
 import ForumTable from './components/ForumTable';
 import Header from './components/Header';
+import NewThread from './components/newThread';
 import Threads from './components/Threads';
 import Topic from './components/Topic';
 
@@ -44,9 +45,8 @@ class App extends React.Component {
             <Route exact path="/" component={ForumTable} />
             <Route path="/threads/:id" component={Threads} />
             <Route path="/topic/:id" component={Topic} />
+            <Route path="/newThread" component={NewThread} />
 
-
-            {/*<ForumTable />*/}
           </div>
         </MuiThemeProvider>
       </Router>

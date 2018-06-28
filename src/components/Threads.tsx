@@ -1,12 +1,17 @@
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
+import withStyles from '@material-ui/core/styles/withStyles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import LocalPostOffice from '@material-ui/icons/LocalPostOffice';
 import * as React from 'react';
 import {Link} from 'react-router-dom';
@@ -45,7 +50,9 @@ export interface IMatch {
 
 interface IThread {
   match: IMatch;
+  classes: any;
 }
+
 
 class Threads extends React.Component<IThread> {
 
@@ -54,9 +61,20 @@ class Threads extends React.Component<IThread> {
   }
 
   render() {
-    const {match} = this.props;
+    const {match, classes} = this.props;
     return(
       <div>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              Title
+            </Typography>
+            <Link to="/newThread" >
+              <Button color="secondary">Add New</Button>
+            </Link>
+          </Toolbar>
+        </AppBar>
+
         <Paper>
           <Table>
             <TableHead>
@@ -93,4 +111,15 @@ class Threads extends React.Component<IThread> {
 
 }
 
-export default Threads;
+export default withStyles({
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+})(Threads);
