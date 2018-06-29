@@ -1,6 +1,6 @@
 declare module '*.svg'
 declare module '*.png'
 declare module '*.jpg'
-declare module 'react-froala-wysiwyg' {
+declare module 'react-quill' {
 
 }

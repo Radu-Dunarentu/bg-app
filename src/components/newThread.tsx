@@ -4,7 +4,7 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill from 'react-quill/dist/index';
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -45,7 +45,7 @@ class NewThread extends React.Component <IPostThread, INewThreadState>{
           />
         </Paper>
         <ReactQuill value={this.state.text}
-                    onChange={this.handleChange} />
+          onChange={this.handleChange} />
       </div>
     );
   }
@@ -55,5 +55,8 @@ export default withStyles(({ mixins, spacing }: Theme) => createStyles({
     ...mixins.gutters(),
     paddingTop: spacing.unit * 2,
     paddingBottom: spacing.unit * 2,
+    border: '1px solid #ccc',
+    borderBottom: 0,
+    boxShadow: 'none'
   },
 }))(NewThread);
