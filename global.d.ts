@@ -1,6 +1,5 @@
-declare module '*.svg'
-declare module '*.png'
-declare module '*.jpg'
-declare module 'react-quill' {
-
-}
+declare module '*.svg';
+declare module '*.png';
+declare module '*.jpg';
+/*
+declare module 'react-quill';*/

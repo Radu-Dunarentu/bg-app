@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import * as React from 'react';
 import * as Modal from 'react-modal';
 import styled from 'styled-components';
@@ -12,9 +13,11 @@ const HeaderContainer = styled.div`
 `;
 
 const Logo = styled.div``;
+/*
 const AccountBtn = styled.button`
     display: flex;
 `;
+*/
 
 interface IHeaderState {
     inModalIsOpen: boolean;
@@ -59,10 +62,14 @@ class Header<IHeader> extends React.Component<{}, IHeaderState> {
         return (
             <HeaderContainer className='appLayout__constrainWidth'>
                 <Logo>Logo</Logo>
-                <AccountBtn>
+              <Button variant="contained" color="primary">
+                <div onClick={this.inOpenModal}>Sign in</div>
+                <div onClick={this.outOpenModal}>Sign out</div>
+              </Button>
+               {/* <AccountBtn>
                     <div onClick={this.inOpenModal}>Sign in</div>
                     <div onClick={this.outOpenModal}>Sign out</div>
-                </AccountBtn>
+                </AccountBtn>*/}
 
                 <SignIn closeModal={this.inCloseModal} modalIsOpen={this.state.inModalIsOpen}/>
                 <SignOut closeModal={this.outCloseModal} modalIsOpen={this.state.outModalIsOpen}/>

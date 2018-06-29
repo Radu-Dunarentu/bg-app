@@ -6177,7 +6177,7 @@ react-popper@^0.10.0:
     popper.js "^1.14.1"
     prop-types "^15.6.1"
 
-react-quill@^1.4.0-beta.1:
+react-quill@1.4.0-beta.1:
   version "1.4.0-beta.1"
   resolved "https://registry.yarnpkg.com/react-quill/-/react-quill-1.4.0-beta.1.tgz#6f42b7464bc7a0d0500dd1a1b6201c8c736db090"
   dependencies:

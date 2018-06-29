@@ -27,7 +27,10 @@
     "jest",
     "src/setupTests.ts"
   ],
-  "files": [
+  "include": [
+    "src/**/*tsx",
+    "src/**/*ts",
+    "src/*",
     "global.d.ts"
   ]
 }

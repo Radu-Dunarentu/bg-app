@@ -1,10 +1,11 @@
 import {Theme} from '@material-ui/core';
+import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
-import ReactQuill from 'react-quill/dist/index';
+// import * as ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -22,12 +23,20 @@ class NewThread extends React.Component <IPostThread, INewThreadState>{
   constructor(props: IPostThread) {
     super(props);
     this.state = { text: '' } ;// You can also pass a Quill Delta here
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKey = this.handleKey.bind(this);
   }
 
-  handleChange(value: string) {
-    console.warn(value);
-    this.setState({ text: value })
+  handleChange(event: any) {
+    console.warn(event.target.value, );
+    this.setState({ text: event.target.value })
+  }
+
+  handleKey(event: any ) {
+    if (event.key === 'Enter') {
+      this.setState({ text: '' });
+      event.target.value = '';
+    }
   }
 
   render() {
@@ -44,8 +53,18 @@ class NewThread extends React.Component <IPostThread, INewThreadState>{
             fullWidth
           />
         </Paper>
-        <ReactQuill value={this.state.text}
-          onChange={this.handleChange} />
+        {/*<ReactQuill value={this.state.text}
+          onChange={this.handleChange} />*/}
+        <Input
+          defaultValue="Hello world"
+          fullWidth
+          className={classes.input}
+          onChange={this.handleChange}
+          onKeyPress={this.handleKey}
+          inputProps={{
+            'aria-label': 'Description',
+          }}
+        />
       </div>
     );
   }
@@ -59,4 +78,7 @@ export default withStyles(({ mixins, spacing }: Theme) => createStyles({
     borderBottom: 0,
     boxShadow: 'none'
   },
+  input: {
+    border: '1px solid #ccc'
+  }
 }))(NewThread);
