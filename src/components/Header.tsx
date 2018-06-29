@@ -3,6 +3,9 @@ import * as React from 'react';
 import * as Modal from 'react-modal';
 import styled from 'styled-components';
 
+import Games from '@material-ui/icons/Games';
+
+import withStyles from '@material-ui/core/styles/withStyles';
 import '../styles.css';
 import SignIn from './SignInModal';
 import SignOut from './SignOutModal';
@@ -12,24 +15,20 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
 `;
 
-const Logo = styled.div``;
-/*
-const AccountBtn = styled.button`
-    display: flex;
-`;
-*/
-
 interface IHeaderState {
     inModalIsOpen: boolean;
     outModalIsOpen: boolean;
 }
 
+interface IHeader {
+    classes: any;
+}
 Modal.setAppElement('#root');
 
-class Header<IHeader> extends React.Component<{}, IHeaderState> {
+class Header extends React.Component<IHeader, IHeaderState> {
 
-    constructor() {
-        super({});
+    constructor(props: IHeader) {
+        super(props);
 
         this.state = {
             inModalIsOpen: false,
@@ -59,12 +58,14 @@ class Header<IHeader> extends React.Component<{}, IHeaderState> {
     }
 
     render() {
+        const {classes} = this.props;
         return (
             <HeaderContainer className='appLayout__constrainWidth'>
-                <Logo>Logo</Logo>
-              <Button variant="contained" color="primary">
-                <div onClick={this.inOpenModal}>Sign in</div>
-                <div onClick={this.outOpenModal}>Sign out</div>
+              <Games className={classes.logo}/>
+              <Button variant="contained" color="secondary">
+                <Button size="small" onClick={this.inOpenModal}>Sign in</Button >
+                  /
+                <Button size="small" onClick={this.outOpenModal}>Sign out</Button >
               </Button>
                {/* <AccountBtn>
                     <div onClick={this.inOpenModal}>Sign in</div>
@@ -78,4 +79,9 @@ class Header<IHeader> extends React.Component<{}, IHeaderState> {
     }
 }
 
-export default Header;
+export default withStyles({
+  logo: {
+    fontSize: 48,
+    color: '#f50057',
+  },
+})(Header);
